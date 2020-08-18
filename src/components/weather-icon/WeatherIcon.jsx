@@ -13,9 +13,13 @@ const iconMap = {
  c: {link: 'https://www.metaweather.com/static/img/weather/c.svg', name: 'Clear'}
 }
 
-const WeatherIcon = ({weather}) => {
+const WeatherIcon = ({ weather, className }) => {
  return (
-  <img src={iconMap[weather].link} alt={iconMap[weather].name} style={{width: '50px', height: '50px'}}/>
+  <img
+   src={iconMap[weather].link}
+   alt={iconMap[weather].name}
+   className={className}
+  />
  );
 };
 

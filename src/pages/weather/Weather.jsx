@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import get from 'lodash/get'
 import SearchBar from '../../components/search-bar';
 import WeatherDisplay from '../../components/weather-display';
-import Title from "../../components/document/Title";
+import { Title } from "../../components/document";
 import Hidden from "../../components/hidden";
 
 const Weather = () => {

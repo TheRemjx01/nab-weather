@@ -1,13 +1,13 @@
 import React from 'react';
 import get from 'lodash/get'
-import {Row, Col, Spin} from 'antd'
+import { Row, Col, Spin } from 'antd'
 
 import WithFetch from "../with-fetch";
 import getUrl from "../../utils/url";
 import getDay from "../../utils/date";
 
 import WeatherItem from "../weather-item";
-import Title from "../document/Title";
+import { Title } from "../document";
 
 import './WeatherDisplay.css'
 

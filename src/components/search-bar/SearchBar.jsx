@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
-import {AutoComplete, Input} from 'antd';
-import {
-    SearchOutlined
-} from '@ant-design/icons';
+import React, { useState } from 'react';
+import { AutoComplete, Input } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import debounce from 'lodash/debounce'
 
-import {getLocationUrl} from "./utils";
+import { getLocationUrl } from "./utils";
 
 import WithFetch from "../with-fetch";
 import getUrl from "../../utils/url";
