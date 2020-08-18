@@ -1,0 +1,22 @@
+.weatherDisplay {
+    padding: 4px;
+}
+
+.weatherDisplay.loading {
+    background-color: #202125;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+    min-width: 1000px;
+    margin-top: 2rem;
+}
+
+.weatherDisplay .weatherItem {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.locationLabel {
+    margin-top: 16px;
+}

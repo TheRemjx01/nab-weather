@@ -1,0 +1,16 @@
+.weatherItem {
+    width: calc(160px - 8px);
+    padding: 4px;
+}
+
+.weatherItem .title {
+    font-size: 1.6rem;
+}
+
+.weatherItem .tempContainer {
+    list-style: none;
+    font-size: 1.2rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+}

@@ -9,18 +9,15 @@ const WithFetch = ({ Component, ErrorComponent, LoadingComponent, url, options }
     React.useEffect(() => {
         setLoading(true);
         fetch(url, options).then(res => {
-            console.log({res});
             res.json().then(jsonRes => {
-                console.log({jsonRes});
                 setData(jsonRes)
             })
         }).catch(err => {
-            console.log(err);
             setError(err);
         }).finally(() => {
             setLoading(false);
         })
-    }, []);
+    }, [url, options, Component, ErrorComponent, LoadingComponent]);
 
     if (error) {
         return React.cloneElement(ErrorComponent, {
@@ -30,7 +27,7 @@ const WithFetch = ({ Component, ErrorComponent, LoadingComponent, url, options }
     if (loading) {
         return LoadingComponent
     }
-    console.log({dataFetch: data});
+
     return React.cloneElement(Component, {
         data
     })

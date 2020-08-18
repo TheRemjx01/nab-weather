@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
-import { AutoComplete, Input } from 'antd';
+import {AutoComplete, Input} from 'antd';
+import {
+    SearchOutlined
+} from '@ant-design/icons';
 import debounce from 'lodash/debounce'
-import WithFetch from "../with-fetch/WithFetch";
-import getUrl from "../../utils/url";
+
 import {getLocationUrl} from "./utils";
 
-const Option = AutoComplete.Option;
+import WithFetch from "../with-fetch/WithFetch";
+import getUrl from "../../utils/url";
+
+import './SearchBar.css'
 
 const Loading = ({SearchBar}) => React.cloneElement(SearchBar, {
     disabled: true,
@@ -19,7 +24,13 @@ const SearchBarError = ({error, SearchBar}) => {
     </>
 };
 
-const generateOptions = ({data = []}) => data.map(({woeid, title}) => ({label: title, value: woeid}));
+const generateOptions = ({data = []}) => {
+    const options = data.map(({woeid, title}) => ({label: title, value: woeid}))
+    if (options.length === 0) {
+        return [{label: 'Not found', value: null, disabled: true}]
+    }
+    return options
+};
 
 const SearchDataResult = ({data = [], SearchBar}) => {
     const CloneSearchBar = React.cloneElement(SearchBar, {
@@ -32,7 +43,7 @@ const SearchDataResult = ({data = [], SearchBar}) => {
 };
 
 
-const SearchBar = ({ onChange, setLoading }) => {
+const SearchBar = ({ onChange }) => {
     const [text, setText] = useState('');
     const handleOnChange= (e, option) => {
         setText('');
@@ -44,14 +55,14 @@ const SearchBar = ({ onChange, setLoading }) => {
                                          autoFocus
                                          onSelect={handleOnChange}
                                          onSearch={throttledSetText}
-                                         style={{minWidth: '200px'}}
+                                         className="searchBar"
                                          defaultValue={text}
-    />;
+    >
+        <Input size="large" placeholder="search" prefix={<SearchOutlined />}/>
+    </AutoComplete>;
     if (!text) {
         return BaseAutocomplete
     }
-
-    console.log({text});
 
     return (
         <WithFetch

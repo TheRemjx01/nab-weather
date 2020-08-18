@@ -1,5 +1,0 @@
-const enhance = () => {
-
-};
-
-export default enhance

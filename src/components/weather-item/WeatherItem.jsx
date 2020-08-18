@@ -1,11 +1,18 @@
 import React from 'react'
+import round from 'lodash/round'
+import WeatherIcon from "../weather-icon/WeatherIcon";
 
-const WeatherItem =({weekDay, minTemp, maxTemp}) => (
-    <div>
-        <h4>{weekDay}</h4>
-        <ul>
-            <li>Min: {minTemp}</li>
-            <li>Max: {maxTemp}</li>
+import './WeatherItem.css'
+
+const getDisplayTemp = (temp) => `${round(temp, 2)}*C`
+
+const WeatherItem =({weekDay, minTemp, maxTemp, weatherIcon}) => (
+    <div className="weatherItem">
+        <h4 className="title">{weekDay}</h4>
+        <WeatherIcon weather={weatherIcon} />
+        <ul className="tempContainer">
+            <li>Min: {getDisplayTemp(minTemp)}</li>
+            <li>Max: {getDisplayTemp(maxTemp)}</li>
         </ul>
     </div>
 );
