@@ -1,6 +1,6 @@
-import React from 'react'
-import {render} from '@testing-library/react'
-import Title from './Title'
+import React from 'react';
+import { render } from '@testing-library/react';
+import Title from './Title';
 
 describe('Title should be work correctly', () => {
  beforeEach(() => {
