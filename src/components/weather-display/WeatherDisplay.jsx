@@ -2,7 +2,7 @@ import React from 'react';
 import get from 'lodash/get'
 import {Row, Col, Spin} from 'antd'
 
-import WithFetch from "../with-fetch/WithFetch";
+import WithFetch from "../with-fetch";
 import getUrl from "../../utils/url";
 import getDay from "../../utils/date";
 
@@ -11,10 +11,10 @@ import Title from "../document/Title";
 
 import './WeatherDisplay.css'
 
-const generateLocationForecastUrl = ({locationId}) => `/location/${locationId}`;
-const generateTitle = ({title}) => `${title} Weather`
+export const generateLocationForecastUrl = ({locationId}) => `/location/${locationId}`;
+export const generateTitle = ({title}) => `${title} Weather`
 
-const WeatherDisplayData = ({data}) => {
+export const WeatherDisplayData = ({data}) => {
     if (!data) {
      return ''
     }
@@ -26,8 +26,8 @@ const WeatherDisplayData = ({data}) => {
      <Row>
       {consolidatedWeathers.map(
        ({id, min_temp, max_temp, applicable_date, weather_state_abbr }) =>
-        <Col>
-         <WeatherItem key={id}
+        <Col key={id}>
+         <WeatherItem
                       minTemp={min_temp}
                       maxTemp={max_temp}
                       weekDay={getDay(applicable_date)}
@@ -48,9 +48,9 @@ export const WeatherLoading = () => {
  )
 };
 
-const WeatherError = ({error}) => error
+export const WeatherError = ({error}) => error
 
-const WeatherDisplay = ({locationId, locationLabel}) => {
+export const WeatherDisplay = ({locationId, locationLabel}) => {
     return (
         <div>
             <h2 className="locationLabel">{locationLabel}</h2>

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 const WithFetch = ({ Component, ErrorComponent, LoadingComponent, url, options }) => {
-    console.log({url});
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(undefined);
     const [error, setError] = useState(undefined);

@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce'
 
 import {getLocationUrl} from "./utils";
 
-import WithFetch from "../with-fetch/WithFetch";
+import WithFetch from "../with-fetch";
 import getUrl from "../../utils/url";
 
 import './SearchBar.css'
@@ -16,6 +16,7 @@ const Loading = ({SearchBar}) => React.cloneElement(SearchBar, {
     disabled: true,
     loading: true,
 });
+
 const SearchBarError = ({error, SearchBar}) => {
     const errorString = error.message;
     return <>
@@ -25,7 +26,7 @@ const SearchBarError = ({error, SearchBar}) => {
 };
 
 const generateOptions = ({data = []}) => {
-    const options = data.map(({woeid, title}) => ({label: title, value: woeid}))
+    const options = data.map(({woeid, title}) => ({label: title, value: woeid.toString()}))
     if (options.length === 0) {
         return [{label: 'Not found', value: null, disabled: true}]
     }
