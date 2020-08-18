@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WeatherDisplay /> should be able to render 1`] = `ShallowWrapper {}`;
+
+exports[`<WeatherDisplayData /> should be able to render when has data 1`] = `ShallowWrapper {}`;
+
+exports[`<WeatherDisplayData /> should be able to render when no data 1`] = `ShallowWrapper {}`;
+
+exports[`<WeatherError /> should be able to render 1`] = `ShallowWrapper {}`;
+
+exports[`<WeatherLoading /> should be able to render 1`] = `ShallowWrapper {}`;

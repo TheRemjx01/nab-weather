@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBar /> can render when no search text 1`] = `ShallowWrapper {}`;
+
+exports[`<SearchBarError /> should be able to render 1`] = `ShallowWrapper {}`;
+
+exports[`<SearchBarLoading /> should be able to render 1`] = `ShallowWrapper {}`;
+
+exports[`<SearchDataResult /> should be able to render 1`] = `ShallowWrapper {}`;

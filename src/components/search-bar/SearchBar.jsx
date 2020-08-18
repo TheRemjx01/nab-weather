@@ -3,19 +3,18 @@ import { AutoComplete, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import debounce from 'lodash/debounce'
 
-import { getLocationUrl } from "./utils";
-
 import WithFetch from "../with-fetch";
 import getUrl from "../../utils/url";
 
 import './SearchBar.css'
+import queryString from "query-string";
 
-const Loading = ({SearchBar}) => React.cloneElement(SearchBar, {
+export const SearchBarLoading = ({SearchBar}) => React.cloneElement(SearchBar, {
     disabled: true,
     loading: true,
 });
 
-const SearchBarError = ({error, SearchBar}) => {
+export const SearchBarError = ({error, SearchBar}) => {
     const errorString = error.message;
     return <>
         {SearchBar}
@@ -23,7 +22,7 @@ const SearchBarError = ({error, SearchBar}) => {
     </>
 };
 
-const generateOptions = ({data = []}) => {
+export const generateOptions = ({data = []}) => {
     const options = data.map(({woeid, title}) => ({label: title, value: woeid.toString()}))
     if (options.length === 0) {
         return [{label: 'Not found', value: null, disabled: true}]
@@ -31,34 +30,39 @@ const generateOptions = ({data = []}) => {
     return options
 };
 
-const SearchDataResult = ({data = [], SearchBar}) => {
-    const CloneSearchBar = React.cloneElement(SearchBar, {
+export const SearchDataResult = ({data = [], SearchBar}) => {
+    return React.cloneElement(SearchBar, {
         options: generateOptions({data}),
         open: true,
     });
-    return <>
-        {CloneSearchBar}
-    </>
+};
+
+export const handleOnChange = ({ onChange, setText }) => (e, option) => {
+    setText('');
+    onChange(option);
+}
+
+export const getLocationUrl = (text) => {
+    const query = {
+        query: text
+    };
+    return `/location/search?${queryString.stringify(query)}`
 };
 
 
-const SearchBar = ({ onChange }) => {
+export const SearchBar = ({ onChange }) => {
     const [text, setText] = useState('');
-    const handleOnChange= (e, option) => {
-        setText('');
-        onChange(option);
-    };
-
     const throttledSetText = debounce(setText, 800);
     let BaseAutocomplete = <AutoComplete allowClear
                                          autoFocus
-                                         onSelect={handleOnChange}
+                                         onSelect={handleOnChange({setText, onChange})}
                                          onSearch={throttledSetText}
                                          className="searchBar"
                                          defaultValue={text}
     >
         <Input size="large" placeholder="search" prefix={<SearchOutlined />}/>
     </AutoComplete>;
+
     if (!text) {
         return BaseAutocomplete
     }
@@ -67,7 +71,7 @@ const SearchBar = ({ onChange }) => {
         <WithFetch
             url={getUrl(getLocationUrl(text))}
             Component={<SearchDataResult SearchBar={BaseAutocomplete} />}
-            LoadingComponent={<Loading SearchBar={BaseAutocomplete} />}
+            LoadingComponent={<SearchBarLoading SearchBar={BaseAutocomplete} />}
             ErrorComponent={<SearchBarError SearchBar={BaseAutocomplete}/>}
         />
 
