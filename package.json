@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "install-server": "cd ./weather-server && npm install",
+    "start-server": "cd ./weather-server && npm start"
   },
   "eslintConfig": {
     "extends": "react-app"
