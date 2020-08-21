@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Hidden /> Should be able to render if condition not match 1`] = `ShallowWrapper {}`;
+exports[`<Hidden /> Should be able to render if condition not match 1`] = `<Dumb />`;
 
-exports[`<Hidden /> should be able to prevent render if match condition 1`] = `ShallowWrapper {}`;
+exports[`<Hidden /> should be able to prevent render if match condition 1`] = `""`;

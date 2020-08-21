@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Weather /> should be able to work correctly 1`] = `ShallowWrapper {}`;
+exports[`<Weather /> should be able to work correctly 1`] = `
+<Fragment>
+  <Title
+    text="Weather App"
+  />
+  <h1>
+    Weather App
+  </h1>
+  <SearchBar
+    onChange={[Function]}
+  />
+  <Hidden
+    when={true}
+  >
+    <WeatherDisplay />
+  </Hidden>
+</Fragment>
+`;

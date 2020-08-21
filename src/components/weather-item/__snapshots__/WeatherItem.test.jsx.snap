@@ -1,3 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<WeatherItem /> should be able to render 1`] = `ShallowWrapper {}`;
+exports[`<WeatherItem /> should be able to render 1`] = `
+<div
+  className="weatherItem"
+>
+  <h4
+    className="title"
+  >
+    Saturday
+  </h4>
+  <WeatherIcon
+    className="icon"
+    weather="sn"
+  />
+  <ul
+    className="tempContainer"
+  >
+    <li>
+      Min: 
+      25.53*C
+    </li>
+    <li>
+      Max: 
+      28.53*C
+    </li>
+  </ul>
+</div>
+`;

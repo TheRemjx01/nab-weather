@@ -1,9 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchBar /> can render when no search text 1`] = `ShallowWrapper {}`;
+exports[`<SearchBar /> can render when no search text 1`] = `
+<ForwardRef(AutoComplete)
+  allowClear={true}
+  autoFocus={true}
+  className="searchBar"
+  defaultValue=""
+  onSearch={[Function]}
+  onSelect={[Function]}
+>
+  <Input
+    placeholder="search"
+    prefix={<ForwardRef(SearchOutlined) />}
+    size="large"
+    type="text"
+  />
+</ForwardRef(AutoComplete)>
+`;
 
-exports[`<SearchBarError /> should be able to render 1`] = `ShallowWrapper {}`;
+exports[`<SearchBarError /> should be able to render 1`] = `
+<Fragment>
+  <DumbSearchBar />
+  mock error
+</Fragment>
+`;
 
-exports[`<SearchBarLoading /> should be able to render 1`] = `ShallowWrapper {}`;
+exports[`<SearchBarLoading /> should be able to render 1`] = `
+<DumbSearchBar
+  disabled={true}
+  loading={true}
+/>
+`;
 
-exports[`<SearchDataResult /> should be able to render 1`] = `ShallowWrapper {}`;
+exports[`<SearchDataResult /> should be able to render 1`] = `
+<DumbSearchBar
+  open={true}
+  options={
+    Array [
+      Object {
+        "label": "option 1",
+        "value": "101",
+      },
+      Object {
+        "label": "option 2",
+        "value": "102",
+      },
+    ]
+  }
+/>
+`;

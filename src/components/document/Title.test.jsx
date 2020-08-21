@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { mount } from 'enzyme'
 import Title from './Title';
 
 describe('Title should be work correctly', () => {
@@ -9,7 +9,7 @@ describe('Title should be work correctly', () => {
 
  it('should be able to change document title', () => {
   const mockTitle = 'mock title'
-  render(<Title text={mockTitle}/>)
+  mount(<Title text={mockTitle}/>)
   expect(document.title).toBe(mockTitle)
  })
 })
