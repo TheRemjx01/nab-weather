@@ -1,10 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import {
  SearchBar, SearchBarLoading,
  SearchBarError, generateOptions,
  SearchDataResult, handleOnChange,
- getLocationUrl,
+ getLocationUrl, SearchBarRender,
 } from "./SearchBar";
 
 const DumbSearchBar = () => <div>Dumb</div>
@@ -17,14 +18,14 @@ const data = [
 describe('<SearchBarError />', () => {
  it('should be able to render', () => {
   const Wrapper = shallow(<SearchBarError SearchBar={<DumbSearchBar />} error={{message: 'mock error'}} />);
-  expect(Wrapper).toMatchSnapshot();
+  expect(toJson(Wrapper)).toMatchSnapshot();
  })
 })
 
 describe('<SearchBarLoading />', () => {
  it('should be able to render', () => {
   const Wrapper = shallow(<SearchBarLoading SearchBar={<DumbSearchBar />}/>);
-  expect(Wrapper).toMatchSnapshot();
+  expect(toJson(Wrapper)).toMatchSnapshot();
   const props = Wrapper.props();
   expect(props.disabled).toBe(true);
   expect(props.loading).toBe(true);
@@ -32,8 +33,8 @@ describe('<SearchBarLoading />', () => {
 });
 
 describe('generateOptions', () => {
- it('should be able to generate empty options with not found', () => {
-  expect(generateOptions({data: []})).toHaveLength(1)
+ it('should be able to generate empty options while not found', () => {
+  expect(generateOptions({})).toHaveLength(1)
  })
  it('should be able to render options', () => {
   expect(generateOptions({data})).toHaveLength(2);
@@ -41,9 +42,15 @@ describe('generateOptions', () => {
 })
 
 describe('<SearchDataResult />', () => {
- it('should be able to render', () => {
+ it('should be able to render when no data', () => {
+  const Wrapper = shallow(<SearchDataResult SearchBar={<DumbSearchBar />} />);
+  expect(toJson(Wrapper)).toMatchSnapshot();
+  const props = Wrapper.props();
+  expect(props.options.length).toBe(1);
+ })
+ it('should be able to render when has data', () => {
   const Wrapper = shallow(<SearchDataResult SearchBar={<DumbSearchBar />} data={data}/>);
-  expect(Wrapper).toMatchSnapshot();
+  expect(toJson(Wrapper)).toMatchSnapshot();
   const props = Wrapper.props();
   expect(props.options.length).toBeGreaterThan(1);
  })
@@ -68,11 +75,22 @@ describe('getLocationUrl', () => {
 })
 
 describe('<SearchBar />', () => {
- it('can render when no search text', () => {
+ it('can render SearchBar', () => {
   const onChange = jest.fn();
   const Wrapper = shallow(<SearchBar onChange={onChange}/>);
-  expect(Wrapper).toMatchSnapshot();
-  const props = Wrapper.props();
-  expect(props.onSearch).toBeTruthy();
+  expect(toJson(Wrapper)).toMatchSnapshot();
+ })
+})
+
+describe('<SearchBarRender />', () => {
+ const DumbSearchBar = <div>Dumb</div>;
+ it('can render while no text', () => {
+  const Wrapper = shallow(<SearchBarRender SearchBar={DumbSearchBar} text='' />);
+  expect(toJson(Wrapper)).toMatchSnapshot();
+ })
+
+ it('can render Fetch while has text', () => {
+  const Wrapper = shallow(<SearchBarRender SearchBar={DumbSearchBar} text='london_id' />);
+  expect(toJson(Wrapper)).toMatchSnapshot();
  })
 })

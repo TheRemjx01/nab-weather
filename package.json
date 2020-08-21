@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.5.4",
+    "enzyme-to-json": "^3.5.0",
     "jest-enzyme": "^7.1.2",
     "lodash": "^4.17.20",
     "query-string": "^6.13.1",

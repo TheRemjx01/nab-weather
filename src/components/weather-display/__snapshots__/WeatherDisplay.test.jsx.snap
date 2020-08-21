@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[` 1`] = `
+<Col
+  key="1"
+>
+  <WeatherItem
+    maxTemp={2}
+    minTemp={1}
+    weatherIcon="sn"
+    weekDay="Tuesday"
+  />
+</Col>
+`;
+
 exports[`<WeatherDisplay /> should be able to render 1`] = `
 <div>
   <h2

@@ -25,4 +25,6 @@ const Weather = () => {
     );
 };
 
+Weather.displayName = 'Weather'
+
 export default Weather;

@@ -1,21 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchBar /> can render when no search text 1`] = `
-<ForwardRef(AutoComplete)
-  allowClear={true}
-  autoFocus={true}
-  className="searchBar"
-  defaultValue=""
-  onSearch={[Function]}
-  onSelect={[Function]}
->
-  <Input
-    placeholder="search"
-    prefix={<ForwardRef(SearchOutlined) />}
-    size="large"
-    type="text"
-  />
-</ForwardRef(AutoComplete)>
+exports[`<SearchBar /> can render SearchBar 1`] = `
+<SearchBarRender
+  SearchBar={
+    <ForwardRef(AutoComplete)
+      allowClear={true}
+      autoFocus={true}
+      className="searchBar"
+      defaultValue=""
+      onSearch={[Function]}
+      onSelect={[Function]}
+    >
+      <Input
+        placeholder="search"
+        prefix={<ForwardRef(SearchOutlined) />}
+        size="large"
+        type="text"
+      />
+    </ForwardRef(AutoComplete)>
+  }
+  text=""
+/>
 `;
 
 exports[`<SearchBarError /> should be able to render 1`] = `
@@ -32,7 +37,46 @@ exports[`<SearchBarLoading /> should be able to render 1`] = `
 />
 `;
 
-exports[`<SearchDataResult /> should be able to render 1`] = `
+exports[`<SearchBarRender /> can render Fetch while has text 1`] = `
+<WithFetch
+  Component={
+    <SearchDataResult
+      SearchBar={
+        <div>
+          Dumb
+        </div>
+      }
+    />
+  }
+  ErrorComponent={
+    <SearchBarError
+      SearchBar={
+        <div>
+          Dumb
+        </div>
+      }
+    />
+  }
+  LoadingComponent={
+    <SearchBarLoading
+      SearchBar={
+        <div>
+          Dumb
+        </div>
+      }
+    />
+  }
+  url="/api/location/search?query=london_id"
+/>
+`;
+
+exports[`<SearchBarRender /> can render while no text 1`] = `
+<div>
+  Dumb
+</div>
+`;
+
+exports[`<SearchDataResult /> should be able to render when has data 1`] = `
 <DumbSearchBar
   open={true}
   options={
@@ -44,6 +88,21 @@ exports[`<SearchDataResult /> should be able to render 1`] = `
       Object {
         "label": "option 2",
         "value": "102",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`<SearchDataResult /> should be able to render when no data 1`] = `
+<DumbSearchBar
+  open={true}
+  options={
+    Array [
+      Object {
+        "disabled": true,
+        "label": "Not found",
+        "value": null,
       },
     ]
   }

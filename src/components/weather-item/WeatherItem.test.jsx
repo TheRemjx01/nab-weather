@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 import { WeatherItem, getDisplayTemp } from './WeatherItem'
 
@@ -13,7 +14,7 @@ describe('getDisplayTemp', () => {
 describe('<WeatherItem />', () => {
  it('should be able to render', () => {
   const Wrapper = shallow(<WeatherItem weekDay='Saturday' minTemp={25.53} maxTemp={28.53} weatherIcon='sn'/>);
-  expect(Wrapper).toMatchSnapshot();
+  expect(toJson(Wrapper)).toMatchSnapshot();
  })
 })
 

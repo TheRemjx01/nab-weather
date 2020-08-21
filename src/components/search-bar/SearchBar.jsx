@@ -49,6 +49,21 @@ export const getLocationUrl = (text) => {
     return `/location/search?${queryString.stringify(query)}`
 };
 
+export const SearchBarRender = ({text, SearchBar}) => {
+    if (!text) {
+        return SearchBar
+    }
+
+    return (
+     <WithFetch
+      url={getUrl(getLocationUrl(text))}
+      Component={<SearchDataResult SearchBar={SearchBar} />}
+      LoadingComponent={<SearchBarLoading SearchBar={SearchBar} />}
+      ErrorComponent={<SearchBarError SearchBar={SearchBar}/>}
+     />
+    )
+}
+
 
 export const SearchBar = ({ onChange }) => {
     const [text, setText] = useState('');
@@ -63,19 +78,7 @@ export const SearchBar = ({ onChange }) => {
         <Input size="large" placeholder="search" prefix={<SearchOutlined />}/>
     </AutoComplete>;
 
-    if (!text) {
-        return BaseAutocomplete
-    }
-
-    return (
-        <WithFetch
-            url={getUrl(getLocationUrl(text))}
-            Component={<SearchDataResult SearchBar={BaseAutocomplete} />}
-            LoadingComponent={<SearchBarLoading SearchBar={BaseAutocomplete} />}
-            ErrorComponent={<SearchBarError SearchBar={BaseAutocomplete}/>}
-        />
-
-    );
+    return <SearchBarRender text={text} SearchBar={BaseAutocomplete}/>
 };
 
 export default SearchBar;

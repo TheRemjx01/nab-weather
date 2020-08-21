@@ -14,6 +14,17 @@ import './WeatherDisplay.css'
 export const generateLocationForecastUrl = ({locationId}) => `/location/${locationId}`;
 export const generateTitle = ({title}) => `${title} Weather`
 
+export const renderWeatherItem = ({id, min_temp, max_temp, applicable_date, weather_state_abbr }) => (
+ <Col key={id}>
+  <WeatherItem
+   minTemp={min_temp}
+   maxTemp={max_temp}
+   weekDay={getDay(applicable_date)}
+   weatherIcon={weather_state_abbr}
+  />
+ </Col>
+)
+
 export const WeatherDisplayData = ({data}) => {
     if (!data) {
      return ''
@@ -24,17 +35,7 @@ export const WeatherDisplayData = ({data}) => {
     <Title text={generateTitle({title: get(data, 'title')})}/>
     <div className="weatherDisplay">
      <Row>
-      {consolidatedWeathers.map(
-       ({id, min_temp, max_temp, applicable_date, weather_state_abbr }) =>
-        <Col key={id}>
-         <WeatherItem
-                      minTemp={min_temp}
-                      maxTemp={max_temp}
-                      weekDay={getDay(applicable_date)}
-                      weatherIcon={weather_state_abbr}
-         />
-        </Col>
-      )}
+      {consolidatedWeathers.map(renderWeatherItem)}
      </Row>
     </div>
     </>
