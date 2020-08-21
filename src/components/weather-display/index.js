@@ -1,3 +1,3 @@
-import WeatherDisplay from './WeatherDisplay'
+import WeatherDisplay from "./WeatherDisplay";
 
-export default WeatherDisplay
+export default WeatherDisplay;

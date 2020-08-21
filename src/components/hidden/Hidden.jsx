@@ -1,9 +1,9 @@
-const Hidden = ({when, children}) => {
- if (when) {
-  return null
- }
+const Hidden = ({ when, children }) => {
+  if (when) {
+    return null;
+  }
 
- return children;
+  return children;
 };
 
 export default Hidden;

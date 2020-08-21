@@ -1,3 +1,3 @@
-import WithFetch from './WithFetch'
+import WithFetch from "./WithFetch";
 
-export default WithFetch
+export default WithFetch;

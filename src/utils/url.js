@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = "/api";
 export const getUrl = (url) => `${BASE_URL}${url}`;
 
-export default getUrl
+export default getUrl;
