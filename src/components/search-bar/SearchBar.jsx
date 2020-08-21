@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { AutoComplete, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import debounce from "lodash/debounce";
@@ -18,10 +18,10 @@ export const SearchBarLoading = ({ SearchBar }) =>
 export const SearchBarError = ({ error, SearchBar }) => {
   const errorString = error.message;
   return (
-    <>
+    <Fragment>
       {SearchBar}
       {errorString}
-    </>
+    </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import get from "lodash/get";
 
 import SearchBar from "../../components/search-bar";
@@ -10,7 +10,7 @@ const Weather = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const title = "Weather App";
   return (
-    <>
+    <Fragment>
       <Title text={title} />
       <h1>{title}</h1>
       <SearchBar onChange={setSelectedLocation} />
@@ -20,7 +20,7 @@ const Weather = () => {
           locationId={get(selectedLocation, "value")}
         />
       </Hidden>
-    </>
+    </Fragment>
   );
 };
 
