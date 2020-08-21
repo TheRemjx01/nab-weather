@@ -7,7 +7,17 @@ This project is a Weather app includes features:
 - [x] When clicking the location in the search result, application will get the weather data within 6 days since today then show them.
 - [x] Data source is https://metaweather.com/api
 
+## Quality
+- The `weather-app` is fully unit tested with `100% coverage`  and `100% pass`
+### Coverage
+![istanbul-coverage](./coverage.png)
+### Unit test
+![unit-test](./unit_test.png) 
+
 ## Set up guide
+This application contains 2 parts:
+- `weather-server` - `NodeJS`
+- `weather-app` - `ReactApp`
 ### Weather Server
 
 #### Problem statements
