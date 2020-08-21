@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import PropTypes from "prop-types";
 import { AutoComplete, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import debounce from "lodash/debounce";
@@ -15,6 +16,10 @@ export const SearchBarLoading = ({ SearchBar }) =>
     loading: true,
   });
 
+SearchBarLoading.propTypes = {
+  SearchBar: PropTypes.node.isRequired,
+};
+
 export const SearchBarError = ({ error, SearchBar }) => {
   const errorString = error.message;
   return (
@@ -23,6 +28,15 @@ export const SearchBarError = ({ error, SearchBar }) => {
       {errorString}
     </Fragment>
   );
+};
+
+const ErrorType = PropTypes.shape({
+  message: PropTypes.string.isRequired,
+});
+
+SearchBarError.propTypes = {
+  SearchBar: PropTypes.node.isRequired,
+  error: ErrorType,
 };
 
 export const generateOptions = ({ data = [] }) => {
@@ -70,6 +84,11 @@ export const SearchBarRender = ({ text, SearchBar }) => {
   );
 };
 
+SearchBarRender.propTypes = {
+  text: PropTypes.string,
+  SearchBar: PropTypes.node.isRequired,
+};
+
 export const SearchBar = ({ onChange }) => {
   const [text, setText] = useState("");
   const throttledSetText = debounce(setText, 800);
@@ -87,6 +106,10 @@ export const SearchBar = ({ onChange }) => {
   );
 
   return <SearchBarRender text={text} SearchBar={BaseAutocomplete} />;
+};
+
+SearchBar.propTypes = {
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

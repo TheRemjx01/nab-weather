@@ -1,7 +1,8 @@
 import React from "react";
 import round from "lodash/round";
-import WeatherIcon from "../weather-icon";
+import PropTypes from "prop-types";
 
+import WeatherIcon from "../weather-icon";
 import "./WeatherItem.css";
 
 export const getDisplayTemp = (temp) => `${round(temp, 2)}*C`;
@@ -16,5 +17,12 @@ export const WeatherItem = ({ weekDay, minTemp, maxTemp, weatherIcon }) => (
     </ul>
   </div>
 );
+
+WeatherItem.propTypes = {
+  weekDay: PropTypes.string.isRequired,
+  weatherIcon: PropTypes.string.isRequired,
+  minTemp: PropTypes.number.isRequired,
+  maxTemp: PropTypes.number.isRequired,
+};
 
 export default WeatherItem;

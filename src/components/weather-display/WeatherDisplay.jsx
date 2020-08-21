@@ -1,5 +1,6 @@
 import React from "react";
 import get from "lodash/get";
+import PropTypes from "prop-types";
 import { Row, Col, Spin } from "antd";
 
 import WithFetch from "../with-fetch";
@@ -48,6 +49,10 @@ export const WeatherDisplayData = ({ data }) => {
   );
 };
 
+WeatherDisplayData.propTypes = {
+  data: PropTypes.object,
+};
+
 export const WeatherLoading = () => {
   return (
     <div className="weatherDisplay loading">
@@ -57,6 +62,10 @@ export const WeatherLoading = () => {
 };
 
 export const WeatherError = ({ error }) => error;
+
+WeatherError.propTypes = {
+  error: PropTypes.string,
+};
 
 export const WeatherDisplay = ({ locationId, locationLabel }) => {
   return (
@@ -70,6 +79,14 @@ export const WeatherDisplay = ({ locationId, locationLabel }) => {
       />
     </div>
   );
+};
+
+WeatherDisplay.propTypes = {
+  locationId: PropTypes.oneOfType([
+    PropTypes.number.isRequired,
+    PropTypes.string.isRequired,
+  ]),
+  locationLabel: PropTypes.string.isRequired,
 };
 
 export default WeatherDisplay;

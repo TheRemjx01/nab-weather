@@ -14,7 +14,7 @@ app.use('/api', (req, res) => {
     }).catch(metaErr => {
         res.status(400).send(metaErr.message)
     }).finally(() => {
-        console.log('Request responsed')
+        console.log('Request responded')
     })
 });
 

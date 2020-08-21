@@ -1,6 +1,8 @@
 .weatherItem {
   width: calc(160px - 8px);
   padding: 4px;
+  background-color: #202125;
+  border-radius: 4px;
 }
 
 .weatherItem .icon {

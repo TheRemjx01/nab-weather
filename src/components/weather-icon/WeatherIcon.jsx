@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const iconMap = {
   sn: {
@@ -43,6 +44,8 @@ const iconMap = {
   },
 };
 
+const weatherAbbr = ["sn", "sl", "h", "t", "hr", "lr", "s", "hc", "lc", "c"];
+
 const WeatherIcon = ({ weather, className }) => {
   return (
     <img
@@ -51,6 +54,11 @@ const WeatherIcon = ({ weather, className }) => {
       className={className}
     />
   );
+};
+
+WeatherIcon.propTypes = {
+  weather: PropTypes.oneOf(weatherAbbr).isRequired,
+  className: PropTypes.string,
 };
 
 export default WeatherIcon;

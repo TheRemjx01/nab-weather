@@ -14,10 +14,10 @@ const Weather = () => {
       <Title text={title} />
       <h1>{title}</h1>
       <SearchBar onChange={setSelectedLocation} />
-      <Hidden when={!selectedLocation}>
+      <Hidden when={!get(selectedLocation, "value")}>
         <WeatherDisplay
-          locationLabel={get(selectedLocation, "label")}
-          locationId={get(selectedLocation, "value")}
+          locationLabel={get(selectedLocation, "label", "")}
+          locationId={get(selectedLocation, "value", 0)}
         />
       </Hidden>
     </Fragment>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const WithFetch = ({
   Component,
@@ -39,6 +40,14 @@ const WithFetch = ({
   return React.cloneElement(Component, {
     data,
   });
+};
+
+WithFetch.propTypes = {
+  Component: PropTypes.node.isRequired,
+  ErrorComponent: PropTypes.node.isRequired,
+  LoadingComponent: PropTypes.node.isRequired,
+  url: PropTypes.string.isRequired,
+  options: PropTypes.object,
 };
 
 export default WithFetch;
